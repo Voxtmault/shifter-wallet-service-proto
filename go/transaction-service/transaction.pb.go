@@ -21,6 +21,61 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type TransactionRPCResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Response int32  `protobuf:"varint,1,opt,name=response,proto3" json:"response,omitempty"`
+	Message  string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *TransactionRPCResponse) Reset() {
+	*x = TransactionRPCResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_transaction_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TransactionRPCResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionRPCResponse) ProtoMessage() {}
+
+func (x *TransactionRPCResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_transaction_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionRPCResponse.ProtoReflect.Descriptor instead.
+func (*TransactionRPCResponse) Descriptor() ([]byte, []int) {
+	return file_transaction_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *TransactionRPCResponse) GetResponse() int32 {
+	if x != nil {
+		return x.Response
+	}
+	return 0
+}
+
+func (x *TransactionRPCResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 type TransactionQueryCriteria struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -34,7 +89,7 @@ type TransactionQueryCriteria struct {
 func (x *TransactionQueryCriteria) Reset() {
 	*x = TransactionQueryCriteria{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[0]
+		mi := &file_transaction_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +102,7 @@ func (x *TransactionQueryCriteria) String() string {
 func (*TransactionQueryCriteria) ProtoMessage() {}
 
 func (x *TransactionQueryCriteria) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[0]
+	mi := &file_transaction_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +115,7 @@ func (x *TransactionQueryCriteria) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionQueryCriteria.ProtoReflect.Descriptor instead.
 func (*TransactionQueryCriteria) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{0}
+	return file_transaction_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TransactionQueryCriteria) GetID() uint64 {
@@ -102,7 +157,7 @@ type TransferMoneyRequest struct {
 func (x *TransferMoneyRequest) Reset() {
 	*x = TransferMoneyRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[1]
+		mi := &file_transaction_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -115,7 +170,7 @@ func (x *TransferMoneyRequest) String() string {
 func (*TransferMoneyRequest) ProtoMessage() {}
 
 func (x *TransferMoneyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[1]
+	mi := &file_transaction_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -128,7 +183,7 @@ func (x *TransferMoneyRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferMoneyRequest.ProtoReflect.Descriptor instead.
 func (*TransferMoneyRequest) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{1}
+	return file_transaction_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *TransferMoneyRequest) GetApiKey() string {
@@ -203,7 +258,7 @@ type TopUpWalletRequest struct {
 func (x *TopUpWalletRequest) Reset() {
 	*x = TopUpWalletRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[2]
+		mi := &file_transaction_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -216,7 +271,7 @@ func (x *TopUpWalletRequest) String() string {
 func (*TopUpWalletRequest) ProtoMessage() {}
 
 func (x *TopUpWalletRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[2]
+	mi := &file_transaction_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -229,7 +284,7 @@ func (x *TopUpWalletRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopUpWalletRequest.ProtoReflect.Descriptor instead.
 func (*TopUpWalletRequest) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{2}
+	return file_transaction_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TopUpWalletRequest) GetApiKey() string {
@@ -295,7 +350,7 @@ type Transaction struct {
 func (x *Transaction) Reset() {
 	*x = Transaction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[3]
+		mi := &file_transaction_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -308,7 +363,7 @@ func (x *Transaction) String() string {
 func (*Transaction) ProtoMessage() {}
 
 func (x *Transaction) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[3]
+	mi := &file_transaction_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -321,7 +376,7 @@ func (x *Transaction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Transaction.ProtoReflect.Descriptor instead.
 func (*Transaction) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{3}
+	return file_transaction_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Transaction) GetTransactionUUID() string {
@@ -406,7 +461,7 @@ type GetTransactionsRequest struct {
 func (x *GetTransactionsRequest) Reset() {
 	*x = GetTransactionsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[4]
+		mi := &file_transaction_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -419,7 +474,7 @@ func (x *GetTransactionsRequest) String() string {
 func (*GetTransactionsRequest) ProtoMessage() {}
 
 func (x *GetTransactionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[4]
+	mi := &file_transaction_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -432,7 +487,7 @@ func (x *GetTransactionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTransactionsRequest.ProtoReflect.Descriptor instead.
 func (*GetTransactionsRequest) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{4}
+	return file_transaction_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetTransactionsRequest) GetApiKey() string {
@@ -461,7 +516,7 @@ type GetTransactionsResponse struct {
 func (x *GetTransactionsResponse) Reset() {
 	*x = GetTransactionsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_transaction_proto_msgTypes[5]
+		mi := &file_transaction_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -474,7 +529,7 @@ func (x *GetTransactionsResponse) String() string {
 func (*GetTransactionsResponse) ProtoMessage() {}
 
 func (x *GetTransactionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[5]
+	mi := &file_transaction_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -487,7 +542,7 @@ func (x *GetTransactionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTransactionsResponse.ProtoReflect.Descriptor instead.
 func (*GetTransactionsResponse) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{5}
+	return file_transaction_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetTransactionsResponse) GetResponse() *wallet_service.RPCResponse {
@@ -509,7 +564,12 @@ var File_transaction_proto protoreflect.FileDescriptor
 var file_transaction_proto_rawDesc = []byte{
 	0x0a, 0x11, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x12, 0x0b, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x1a, 0x0c, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x7a,
+	0x1a, 0x0c, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x4e,
+	0x0a, 0x16, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x50, 0x43,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x72, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x7a,
 	0x0a, 0x18, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x51, 0x75, 0x65,
 	0x72, 0x79, 0x43, 0x72, 0x69, 0x74, 0x65, 0x72, 0x69, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x49, 0x44,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x02, 0x49, 0x44, 0x12, 0x24, 0x0a, 0x0d, 0x56, 0x65,
@@ -604,16 +664,18 @@ var file_transaction_proto_rawDesc = []byte{
 	0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61,
 	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f,
 	0x6e, 0x52, 0x0c, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x32,
-	0x80, 0x02, 0x0a, 0x12, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x47, 0x0a, 0x0d, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66,
+	0xa0, 0x02, 0x0a, 0x12, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x57, 0x0a, 0x0d, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66,
 	0x65, 0x72, 0x4d, 0x6f, 0x6e, 0x65, 0x79, 0x12, 0x21, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61,
 	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x4d, 0x6f,
-	0x6e, 0x65, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x77, 0x61, 0x6c,
-	0x6c, 0x65, 0x74, 0x2e, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x43, 0x0a, 0x0b, 0x54, 0x6f, 0x70, 0x55, 0x70, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x12, 0x1f,
+	0x6e, 0x65, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x74, 0x72, 0x61,
+	0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x53, 0x0a, 0x0b, 0x54, 0x6f, 0x70, 0x55, 0x70, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x12, 0x1f,
 	0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x6f, 0x70,
 	0x55, 0x70, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x13, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x2e, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70,
+	0x23, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x54, 0x72,
+	0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x50, 0x43, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5c, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73,
 	0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x23, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61,
 	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
@@ -637,28 +699,29 @@ func file_transaction_proto_rawDescGZIP() []byte {
 	return file_transaction_proto_rawDescData
 }
 
-var file_transaction_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_transaction_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_transaction_proto_goTypes = []interface{}{
-	(*TransactionQueryCriteria)(nil),   // 0: transaction.TransactionQueryCriteria
-	(*TransferMoneyRequest)(nil),       // 1: transaction.TransferMoneyRequest
-	(*TopUpWalletRequest)(nil),         // 2: transaction.TopUpWalletRequest
-	(*Transaction)(nil),                // 3: transaction.Transaction
-	(*GetTransactionsRequest)(nil),     // 4: transaction.GetTransactionsRequest
-	(*GetTransactionsResponse)(nil),    // 5: transaction.GetTransactionsResponse
-	(*wallet_service.RPCResponse)(nil), // 6: wallet.RPCResponse
+	(*TransactionRPCResponse)(nil),     // 0: transaction.TransactionRPCResponse
+	(*TransactionQueryCriteria)(nil),   // 1: transaction.TransactionQueryCriteria
+	(*TransferMoneyRequest)(nil),       // 2: transaction.TransferMoneyRequest
+	(*TopUpWalletRequest)(nil),         // 3: transaction.TopUpWalletRequest
+	(*Transaction)(nil),                // 4: transaction.Transaction
+	(*GetTransactionsRequest)(nil),     // 5: transaction.GetTransactionsRequest
+	(*GetTransactionsResponse)(nil),    // 6: transaction.GetTransactionsResponse
+	(*wallet_service.RPCResponse)(nil), // 7: wallet.RPCResponse
 }
 var file_transaction_proto_depIdxs = []int32{
-	1, // 0: transaction.Transaction.TransferDetails:type_name -> transaction.TransferMoneyRequest
-	2, // 1: transaction.Transaction.TopUpDetails:type_name -> transaction.TopUpWalletRequest
-	0, // 2: transaction.GetTransactionsRequest.queryCriteria:type_name -> transaction.TransactionQueryCriteria
-	6, // 3: transaction.GetTransactionsResponse.response:type_name -> wallet.RPCResponse
-	3, // 4: transaction.GetTransactionsResponse.transactions:type_name -> transaction.Transaction
-	1, // 5: transaction.TransactionService.TransferMoney:input_type -> transaction.TransferMoneyRequest
-	2, // 6: transaction.TransactionService.TopUpWallet:input_type -> transaction.TopUpWalletRequest
-	4, // 7: transaction.TransactionService.GetTransactions:input_type -> transaction.GetTransactionsRequest
-	6, // 8: transaction.TransactionService.TransferMoney:output_type -> wallet.RPCResponse
-	6, // 9: transaction.TransactionService.TopUpWallet:output_type -> wallet.RPCResponse
-	5, // 10: transaction.TransactionService.GetTransactions:output_type -> transaction.GetTransactionsResponse
+	2, // 0: transaction.Transaction.TransferDetails:type_name -> transaction.TransferMoneyRequest
+	3, // 1: transaction.Transaction.TopUpDetails:type_name -> transaction.TopUpWalletRequest
+	1, // 2: transaction.GetTransactionsRequest.queryCriteria:type_name -> transaction.TransactionQueryCriteria
+	7, // 3: transaction.GetTransactionsResponse.response:type_name -> wallet.RPCResponse
+	4, // 4: transaction.GetTransactionsResponse.transactions:type_name -> transaction.Transaction
+	2, // 5: transaction.TransactionService.TransferMoney:input_type -> transaction.TransferMoneyRequest
+	3, // 6: transaction.TransactionService.TopUpWallet:input_type -> transaction.TopUpWalletRequest
+	5, // 7: transaction.TransactionService.GetTransactions:input_type -> transaction.GetTransactionsRequest
+	0, // 8: transaction.TransactionService.TransferMoney:output_type -> transaction.TransactionRPCResponse
+	0, // 9: transaction.TransactionService.TopUpWallet:output_type -> transaction.TransactionRPCResponse
+	6, // 10: transaction.TransactionService.GetTransactions:output_type -> transaction.GetTransactionsResponse
 	8, // [8:11] is the sub-list for method output_type
 	5, // [5:8] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -673,7 +736,7 @@ func file_transaction_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_transaction_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransactionQueryCriteria); i {
+			switch v := v.(*TransactionRPCResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -685,7 +748,7 @@ func file_transaction_proto_init() {
 			}
 		}
 		file_transaction_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransferMoneyRequest); i {
+			switch v := v.(*TransactionQueryCriteria); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -697,7 +760,7 @@ func file_transaction_proto_init() {
 			}
 		}
 		file_transaction_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TopUpWalletRequest); i {
+			switch v := v.(*TransferMoneyRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -709,7 +772,7 @@ func file_transaction_proto_init() {
 			}
 		}
 		file_transaction_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Transaction); i {
+			switch v := v.(*TopUpWalletRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -721,7 +784,7 @@ func file_transaction_proto_init() {
 			}
 		}
 		file_transaction_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetTransactionsRequest); i {
+			switch v := v.(*Transaction); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -733,6 +796,18 @@ func file_transaction_proto_init() {
 			}
 		}
 		file_transaction_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTransactionsRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_transaction_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetTransactionsResponse); i {
 			case 0:
 				return &v.state
@@ -745,15 +820,15 @@ func file_transaction_proto_init() {
 			}
 		}
 	}
-	file_transaction_proto_msgTypes[3].OneofWrappers = []interface{}{}
 	file_transaction_proto_msgTypes[4].OneofWrappers = []interface{}{}
+	file_transaction_proto_msgTypes[5].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_transaction_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

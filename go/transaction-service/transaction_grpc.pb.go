@@ -7,7 +7,6 @@
 package transaction_service
 
 import (
-	wallet_service "./wallet-service"
 	context "context"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -23,8 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TransactionServiceClient interface {
-	TransferMoney(ctx context.Context, in *TransferMoneyRequest, opts ...grpc.CallOption) (*wallet_service.RPCResponse, error)
-	TopUpWallet(ctx context.Context, in *TopUpWalletRequest, opts ...grpc.CallOption) (*wallet_service.RPCResponse, error)
+	TransferMoney(ctx context.Context, in *TransferMoneyRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error)
+	TopUpWallet(ctx context.Context, in *TopUpWalletRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error)
 	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
 }
 
@@ -36,8 +35,8 @@ func NewTransactionServiceClient(cc grpc.ClientConnInterface) TransactionService
 	return &transactionServiceClient{cc}
 }
 
-func (c *transactionServiceClient) TransferMoney(ctx context.Context, in *TransferMoneyRequest, opts ...grpc.CallOption) (*wallet_service.RPCResponse, error) {
-	out := new(wallet_service.RPCResponse)
+func (c *transactionServiceClient) TransferMoney(ctx context.Context, in *TransferMoneyRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error) {
+	out := new(TransactionRPCResponse)
 	err := c.cc.Invoke(ctx, "/transaction.TransactionService/TransferMoney", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -45,8 +44,8 @@ func (c *transactionServiceClient) TransferMoney(ctx context.Context, in *Transf
 	return out, nil
 }
 
-func (c *transactionServiceClient) TopUpWallet(ctx context.Context, in *TopUpWalletRequest, opts ...grpc.CallOption) (*wallet_service.RPCResponse, error) {
-	out := new(wallet_service.RPCResponse)
+func (c *transactionServiceClient) TopUpWallet(ctx context.Context, in *TopUpWalletRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error) {
+	out := new(TransactionRPCResponse)
 	err := c.cc.Invoke(ctx, "/transaction.TransactionService/TopUpWallet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -67,8 +66,8 @@ func (c *transactionServiceClient) GetTransactions(ctx context.Context, in *GetT
 // All implementations must embed UnimplementedTransactionServiceServer
 // for forward compatibility
 type TransactionServiceServer interface {
-	TransferMoney(context.Context, *TransferMoneyRequest) (*wallet_service.RPCResponse, error)
-	TopUpWallet(context.Context, *TopUpWalletRequest) (*wallet_service.RPCResponse, error)
+	TransferMoney(context.Context, *TransferMoneyRequest) (*TransactionRPCResponse, error)
+	TopUpWallet(context.Context, *TopUpWalletRequest) (*TransactionRPCResponse, error)
 	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
 	mustEmbedUnimplementedTransactionServiceServer()
 }
@@ -77,10 +76,10 @@ type TransactionServiceServer interface {
 type UnimplementedTransactionServiceServer struct {
 }
 
-func (UnimplementedTransactionServiceServer) TransferMoney(context.Context, *TransferMoneyRequest) (*wallet_service.RPCResponse, error) {
+func (UnimplementedTransactionServiceServer) TransferMoney(context.Context, *TransferMoneyRequest) (*TransactionRPCResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferMoney not implemented")
 }
-func (UnimplementedTransactionServiceServer) TopUpWallet(context.Context, *TopUpWalletRequest) (*wallet_service.RPCResponse, error) {
+func (UnimplementedTransactionServiceServer) TopUpWallet(context.Context, *TopUpWalletRequest) (*TransactionRPCResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TopUpWallet not implemented")
 }
 func (UnimplementedTransactionServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {

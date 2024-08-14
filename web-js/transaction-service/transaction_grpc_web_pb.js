@@ -80,13 +80,13 @@ proto.transaction.TransactionServicePromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.transaction.TransferMoneyRequest,
- *   !proto.wallet.RPCResponse>}
+ *   !proto.transaction.TransactionRPCResponse>}
  */
 const methodDescriptor_TransactionService_TransferMoney = new grpc.web.MethodDescriptor(
   '/transaction.TransactionService/TransferMoney',
   grpc.web.MethodType.UNARY,
   proto.transaction.TransferMoneyRequest,
-  wallet_pb.RPCResponse,
+  proto.transaction.TransactionRPCResponse,
   /**
    * @param {!proto.transaction.TransferMoneyRequest} request
    * @return {!Uint8Array}
@@ -94,7 +94,7 @@ const methodDescriptor_TransactionService_TransferMoney = new grpc.web.MethodDes
   function(request) {
     return request.serializeBinary();
   },
-  wallet_pb.RPCResponse.deserializeBinary
+  proto.transaction.TransactionRPCResponse.deserializeBinary
 );
 
 
@@ -103,9 +103,9 @@ const methodDescriptor_TransactionService_TransferMoney = new grpc.web.MethodDes
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.wallet.RPCResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.transaction.TransactionRPCResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.wallet.RPCResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.transaction.TransactionRPCResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.transaction.TransactionServiceClient.prototype.transferMoney =
@@ -124,7 +124,7 @@ proto.transaction.TransactionServiceClient.prototype.transferMoney =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.wallet.RPCResponse>}
+ * @return {!Promise<!proto.transaction.TransactionRPCResponse>}
  *     Promise that resolves to the response
  */
 proto.transaction.TransactionServicePromiseClient.prototype.transferMoney =
@@ -141,13 +141,13 @@ proto.transaction.TransactionServicePromiseClient.prototype.transferMoney =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.transaction.TopUpWalletRequest,
- *   !proto.wallet.RPCResponse>}
+ *   !proto.transaction.TransactionRPCResponse>}
  */
 const methodDescriptor_TransactionService_TopUpWallet = new grpc.web.MethodDescriptor(
   '/transaction.TransactionService/TopUpWallet',
   grpc.web.MethodType.UNARY,
   proto.transaction.TopUpWalletRequest,
-  wallet_pb.RPCResponse,
+  proto.transaction.TransactionRPCResponse,
   /**
    * @param {!proto.transaction.TopUpWalletRequest} request
    * @return {!Uint8Array}
@@ -155,7 +155,7 @@ const methodDescriptor_TransactionService_TopUpWallet = new grpc.web.MethodDescr
   function(request) {
     return request.serializeBinary();
   },
-  wallet_pb.RPCResponse.deserializeBinary
+  proto.transaction.TransactionRPCResponse.deserializeBinary
 );
 
 
@@ -164,9 +164,9 @@ const methodDescriptor_TransactionService_TopUpWallet = new grpc.web.MethodDescr
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.wallet.RPCResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.transaction.TransactionRPCResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.wallet.RPCResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.transaction.TransactionRPCResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.transaction.TransactionServiceClient.prototype.topUpWallet =
@@ -185,7 +185,7 @@ proto.transaction.TransactionServiceClient.prototype.topUpWallet =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.wallet.RPCResponse>}
+ * @return {!Promise<!proto.transaction.TransactionRPCResponse>}
  *     Promise that resolves to the response
  */
 proto.transaction.TransactionServicePromiseClient.prototype.topUpWallet =

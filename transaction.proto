@@ -7,9 +7,14 @@ package transaction;
 import "wallet.proto";
 
 service TransactionService {
-    rpc TransferMoney(TransferMoneyRequest) returns (wallet.RPCResponse);
-    rpc TopUpWallet(TopUpWalletRequest) returns (wallet.RPCResponse);
+    rpc TransferMoney(TransferMoneyRequest) returns (TransactionRPCResponse);
+    rpc TopUpWallet(TopUpWalletRequest) returns (TransactionRPCResponse);
     rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+}
+
+message TransactionRPCResponse {
+    int32 response = 1;
+    string message = 2;
 }
 
 message TransactionQueryCriteria {
