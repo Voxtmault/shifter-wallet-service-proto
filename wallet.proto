@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+option go_package = "./wallet-service";
+
+package wallet;
+
+service WalletService {
+    rpc CreateWallet(CreateWalletRequest) returns (CreateWwalletResponse);
+    rpc GetWallets(GetWalletsRequest) returns (GetWalletsResponse);
+    rpc GetWalletByParam(GetWalletByParamRequest) returns (GetWalletResponse);
+    rpc GetWalletByToken(GetWalletByTokenRequest) returns (GetWalletResponse);
+    rpc UpdateWalletAmmount(UpdateWalletAmmountRequest) returns (RPCResponse);
+    rpc UpdateWalletStatus(UpdateWalletStatusRequest) returns (RPCResponse);
+    rpc DeleteWallet(DeleteWalletRequest) returns (RPCResponse);
+}
+
+message RPCResponse {
+    int32 response = 1;
+    string message = 2;
+}
+
+// Wallet are created after user registration
+message CreateWalletRequest {
+    string apiKey = 1;
+    uint64 user_id = 2;
+    string sourceTable = 3;
+}
+message CreateWwalletResponse {
+    string response = 1;
+    string message = 2;
+}
+
+// Wallet Structure
+message Wallet {
+    uint64 ID = 1;
+    string VendorID = 2;
+    string VendorName = 3;
+    string WalletVendorAddress = 4;
+    string WalletStatus = 5;
+    uint64 OwnerID = 6;
+    string OwnerName = 7;
+    string OwnerTable = 8;
+    string Currency = 9;
+    int64  Ammount = 10;
+    string CreatedAt = 11;
+}
+
+message GetWalletsRequest {
+    string apiKey = 1;
+}
+message GetWalletsResponse {
+    RPCResponse response = 1;
+    repeated Wallet wallets = 3;
+}
+
+message GetWalletByParamRequest {
+    string apiKey = 1;
+    uint64 ID = 2;
+    string VendorID = 3;
+    string WalletVendorAddress = 4;
+}
+
+message GetWalletByTokenRequest {
+    string apiKey = 1;
+    string token = 2;
+}
+
+message GetWalletResponse {
+    RPCResponse response = 1;
+    Wallet wallet = 2;
+}
+
+message UpdateWalletAmmountRequest {
+    string apiKey = 1;
+    uint64 user_id = 2;
+    string sourceTable = 3;
+    uint64 ammount = 4;
+}
+
+message UpdateWalletStatusRequest {
+    string apiKey = 1;
+    uint64 user_id = 2;
+    string sourceTable = 3;
+    bool status = 4;
+}
+
+message DeleteWalletRequest {
+    string apiKey = 1;
+    uint64 ID = 2;
+    string VendorID = 3;
+    string WalletVendorAddress = 4;
+    uint64 OwnerId = 5;
+    string OwnerTable = 6;
+}

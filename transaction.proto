@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option go_package = "./transaction-service";
+
+package transaction;
+
+import "wallet.proto";
+
+service TransactionService {
+    rpc TransferMoney(TransferMoneyRequest) returns (wallet.RPCResponse);
+    rpc TopUpWallet(TopUpWalletRequest) returns (wallet.RPCResponse);
+    rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+}
+
+message TransactionQueryCriteria {
+    uint64 ID = 1;
+    string VendorAddress = 2;
+    string TransactionUUID = 3;
+}
+
+message TransferMoneyRequest {
+    string apiKey = 1;
+    uint64 SourceOwnerID = 2;
+    string SourceOwnerTable = 3;
+    uint64 DestinationOwnerID = 4;
+    string DestinationOwnerTable = 5;
+    uint64 IDWalletUpdateAction = 6;
+    int64  Ammount = 7;
+    string Description = 8;
+}
+
+message TopUpWalletRequest {
+    string apiKey = 1;
+    uint64 OwnerID = 2;
+    string OwnerTable = 3;
+    uint64 IDWalletUpdateAction = 4;
+    int64  Ammount = 5;
+    string Description = 6;
+}
+
+// Transactions Structure
+message Transaction {
+    string TransactionUUID = 1;
+    optional TransferMoneyRequest TransferDetails = 2;
+    optional TopUpWalletRequest TopUpDetails = 3;
+    uint64 IDWalletUpdateAction = 4;
+    string WalletUpdateAction = 5;
+    uint64 IDWalletLogStatus = 6;
+    string WalletLogStatus = 7;
+    sint64 Ammount = 8;
+    string Description = 9;
+    string CreatedAt = 10;
+}
+
+message GetTransactionsRequest {
+    string apiKey = 1;
+    optional TransactionQueryCriteria queryCriteria = 2;
+}
+message GetTransactionsResponse {
+    wallet.RPCResponse response = 1;
+    repeated Transaction transactions = 3;
+}
