@@ -77,7 +77,7 @@ message UpdateWalletStatusRequest {
     string apiKey = 1;
     uint64 user_id = 2;
     string sourceTable = 3;
-    bool status = 4;
+    uint64 status = 4;
 }
 
 message DeleteWalletRequest {

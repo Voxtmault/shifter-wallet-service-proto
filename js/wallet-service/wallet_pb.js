@@ -2221,7 +2221,7 @@ proto.wallet.UpdateWalletStatusRequest.toObject = function(includeInstance, msg)
     apikey: jspb.Message.getFieldWithDefault(msg, 1, ""),
     userId: jspb.Message.getFieldWithDefault(msg, 2, 0),
     sourcetable: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    status: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+    status: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -2271,7 +2271,7 @@ proto.wallet.UpdateWalletStatusRequest.deserializeBinaryFromReader = function(ms
       msg.setSourcetable(value);
       break;
     case 4:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = /** @type {number} */ (reader.readUint64());
       msg.setStatus(value);
       break;
     default:
@@ -2325,8 +2325,8 @@ proto.wallet.UpdateWalletStatusRequest.serializeBinaryToWriter = function(messag
     );
   }
   f = message.getStatus();
-  if (f) {
-    writer.writeBool(
+  if (f !== 0) {
+    writer.writeUint64(
       4,
       f
     );
@@ -2389,20 +2389,20 @@ proto.wallet.UpdateWalletStatusRequest.prototype.setSourcetable = function(value
 
 
 /**
- * optional bool status = 4;
- * @return {boolean}
+ * optional uint64 status = 4;
+ * @return {number}
  */
 proto.wallet.UpdateWalletStatusRequest.prototype.getStatus = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {number} value
  * @return {!proto.wallet.UpdateWalletStatusRequest} returns this
  */
 proto.wallet.UpdateWalletStatusRequest.prototype.setStatus = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
