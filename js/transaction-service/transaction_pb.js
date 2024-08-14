@@ -21,8 +21,6 @@ var global =
     (function () { return this; }).call(null) ||
     Function('return this')();
 
-var wallet_pb = require('./wallet_pb.js');
-goog.object.extend(proto, wallet_pb);
 goog.exportSymbol('proto.transaction.GetTransactionsRequest', null, global);
 goog.exportSymbol('proto.transaction.GetTransactionsResponse', null, global);
 goog.exportSymbol('proto.transaction.TopUpWalletRequest', null, global);
@@ -1809,7 +1807,7 @@ proto.transaction.GetTransactionsResponse.prototype.toObject = function(opt_incl
  */
 proto.transaction.GetTransactionsResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    response: (f = msg.getResponse()) && wallet_pb.RPCResponse.toObject(includeInstance, f),
+    response: (f = msg.getResponse()) && proto.transaction.TransactionRPCResponse.toObject(includeInstance, f),
     transactionsList: jspb.Message.toObjectList(msg.getTransactionsList(),
     proto.transaction.Transaction.toObject, includeInstance)
   };
@@ -1849,8 +1847,8 @@ proto.transaction.GetTransactionsResponse.deserializeBinaryFromReader = function
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new wallet_pb.RPCResponse;
-      reader.readMessage(value,wallet_pb.RPCResponse.deserializeBinaryFromReader);
+      var value = new proto.transaction.TransactionRPCResponse;
+      reader.readMessage(value,proto.transaction.TransactionRPCResponse.deserializeBinaryFromReader);
       msg.setResponse(value);
       break;
     case 3:
@@ -1892,7 +1890,7 @@ proto.transaction.GetTransactionsResponse.serializeBinaryToWriter = function(mes
     writer.writeMessage(
       1,
       f,
-      wallet_pb.RPCResponse.serializeBinaryToWriter
+      proto.transaction.TransactionRPCResponse.serializeBinaryToWriter
     );
   }
   f = message.getTransactionsList();
@@ -1907,17 +1905,17 @@ proto.transaction.GetTransactionsResponse.serializeBinaryToWriter = function(mes
 
 
 /**
- * optional wallet.RPCResponse response = 1;
- * @return {?proto.wallet.RPCResponse}
+ * optional TransactionRPCResponse response = 1;
+ * @return {?proto.transaction.TransactionRPCResponse}
  */
 proto.transaction.GetTransactionsResponse.prototype.getResponse = function() {
-  return /** @type{?proto.wallet.RPCResponse} */ (
-    jspb.Message.getWrapperField(this, wallet_pb.RPCResponse, 1));
+  return /** @type{?proto.transaction.TransactionRPCResponse} */ (
+    jspb.Message.getWrapperField(this, proto.transaction.TransactionRPCResponse, 1));
 };
 
 
 /**
- * @param {?proto.wallet.RPCResponse|undefined} value
+ * @param {?proto.transaction.TransactionRPCResponse|undefined} value
  * @return {!proto.transaction.GetTransactionsResponse} returns this
 */
 proto.transaction.GetTransactionsResponse.prototype.setResponse = function(value) {

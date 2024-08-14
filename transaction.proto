@@ -4,8 +4,6 @@ option go_package = "./transaction-service";
 
 package transaction;
 
-import "wallet.proto";
-
 service TransactionService {
     rpc TransferMoney(TransferMoneyRequest) returns (TransactionRPCResponse);
     rpc TopUpWallet(TopUpWalletRequest) returns (TransactionRPCResponse);
@@ -62,6 +60,6 @@ message GetTransactionsRequest {
     optional TransactionQueryCriteria queryCriteria = 2;
 }
 message GetTransactionsResponse {
-    wallet.RPCResponse response = 1;
+    TransactionRPCResponse response = 1;
     repeated Transaction transactions = 3;
 }

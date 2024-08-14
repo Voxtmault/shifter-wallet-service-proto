@@ -19,8 +19,6 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-
-var wallet_pb = require('./wallet_pb.js')
 const proto = {};
 proto.transaction = require('./transaction_pb.js');
 
