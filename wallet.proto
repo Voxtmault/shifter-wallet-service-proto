@@ -5,7 +5,7 @@ option go_package = "./wallet-service";
 package wallet;
 
 service WalletService {
-    rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
+    rpc CreateWallet(CreateWalletRequest) returns (RPCResponse);
     rpc GetWallets(GetWalletsRequest) returns (GetWalletsResponse);
     rpc GetWalletByParam(GetWalletByParamRequest) returns (GetWalletResponse);
     rpc GetWalletByToken(GetWalletByTokenRequest) returns (GetWalletResponse);
@@ -24,10 +24,6 @@ message CreateWalletRequest {
     string apiKey = 1;
     uint64 user_id = 2;
     string sourceTable = 3;
-}
-message CreateWalletResponse {
-    string response = 1;
-    string message = 2;
 }
 
 // Wallet Structure

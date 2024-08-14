@@ -78,13 +78,13 @@ proto.wallet.WalletServicePromiseClient =
  * @const
  * @type {!grpc.web.MethodDescriptor<
  *   !proto.wallet.CreateWalletRequest,
- *   !proto.wallet.CreateWalletResponse>}
+ *   !proto.wallet.RPCResponse>}
  */
 const methodDescriptor_WalletService_CreateWallet = new grpc.web.MethodDescriptor(
   '/wallet.WalletService/CreateWallet',
   grpc.web.MethodType.UNARY,
   proto.wallet.CreateWalletRequest,
-  proto.wallet.CreateWalletResponse,
+  proto.wallet.RPCResponse,
   /**
    * @param {!proto.wallet.CreateWalletRequest} request
    * @return {!Uint8Array}
@@ -92,7 +92,7 @@ const methodDescriptor_WalletService_CreateWallet = new grpc.web.MethodDescripto
   function(request) {
     return request.serializeBinary();
   },
-  proto.wallet.CreateWalletResponse.deserializeBinary
+  proto.wallet.RPCResponse.deserializeBinary
 );
 
 
@@ -101,9 +101,9 @@ const methodDescriptor_WalletService_CreateWallet = new grpc.web.MethodDescripto
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.wallet.CreateWalletResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.wallet.RPCResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.wallet.CreateWalletResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.wallet.RPCResponse>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.wallet.WalletServiceClient.prototype.createWallet =
@@ -122,7 +122,7 @@ proto.wallet.WalletServiceClient.prototype.createWallet =
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.wallet.CreateWalletResponse>}
+ * @return {!Promise<!proto.wallet.RPCResponse>}
  *     Promise that resolves to the response
  */
 proto.wallet.WalletServicePromiseClient.prototype.createWallet =
