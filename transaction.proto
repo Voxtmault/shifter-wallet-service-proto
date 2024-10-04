@@ -16,8 +16,8 @@ message TransactionRPCResponse {
 }
 
 message TransactionQueryCriteria {
-    uint64 ID = 1;
-    string VendorAddress = 2;
+    int64 OwnerID = 1;
+    string OwnerSourceTable = 2;
     string TransactionUUID = 3;
 }
 

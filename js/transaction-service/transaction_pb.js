@@ -367,8 +367,8 @@ proto.transaction.TransactionQueryCriteria.prototype.toObject = function(opt_inc
  */
 proto.transaction.TransactionQueryCriteria.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    vendoraddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    ownerid: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    ownersourcetable: jspb.Message.getFieldWithDefault(msg, 2, ""),
     transactionuuid: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
@@ -407,12 +407,12 @@ proto.transaction.TransactionQueryCriteria.deserializeBinaryFromReader = functio
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
-      msg.setId(value);
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setOwnerid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setVendoraddress(value);
+      msg.setOwnersourcetable(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -447,14 +447,14 @@ proto.transaction.TransactionQueryCriteria.prototype.serializeBinary = function(
  */
 proto.transaction.TransactionQueryCriteria.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getId();
+  f = message.getOwnerid();
   if (f !== 0) {
-    writer.writeUint64(
+    writer.writeInt64(
       1,
       f
     );
   }
-  f = message.getVendoraddress();
+  f = message.getOwnersourcetable();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -472,10 +472,10 @@ proto.transaction.TransactionQueryCriteria.serializeBinaryToWriter = function(me
 
 
 /**
- * optional uint64 ID = 1;
+ * optional int64 OwnerID = 1;
  * @return {number}
  */
-proto.transaction.TransactionQueryCriteria.prototype.getId = function() {
+proto.transaction.TransactionQueryCriteria.prototype.getOwnerid = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -484,16 +484,16 @@ proto.transaction.TransactionQueryCriteria.prototype.getId = function() {
  * @param {number} value
  * @return {!proto.transaction.TransactionQueryCriteria} returns this
  */
-proto.transaction.TransactionQueryCriteria.prototype.setId = function(value) {
+proto.transaction.TransactionQueryCriteria.prototype.setOwnerid = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional string VendorAddress = 2;
+ * optional string OwnerSourceTable = 2;
  * @return {string}
  */
-proto.transaction.TransactionQueryCriteria.prototype.getVendoraddress = function() {
+proto.transaction.TransactionQueryCriteria.prototype.getOwnersourcetable = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -502,7 +502,7 @@ proto.transaction.TransactionQueryCriteria.prototype.getVendoraddress = function
  * @param {string} value
  * @return {!proto.transaction.TransactionQueryCriteria} returns this
  */
-proto.transaction.TransactionQueryCriteria.prototype.setVendoraddress = function(value) {
+proto.transaction.TransactionQueryCriteria.prototype.setOwnersourcetable = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
