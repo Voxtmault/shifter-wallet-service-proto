@@ -1740,7 +1740,7 @@ proto.transaction.Withdraw.toObject = function(includeInstance, msg) {
     ownertable: jspb.Message.getFieldWithDefault(msg, 3, ""),
     externalwalletid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     externalbankcode: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    externalacountnumber: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    externalaccountnumber: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -1799,7 +1799,7 @@ proto.transaction.Withdraw.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 6:
       var value = /** @type {number} */ (reader.readSint64());
-      msg.setExternalacountnumber(value);
+      msg.setExternalaccountnumber(value);
       break;
     default:
       reader.skipField();
@@ -1865,7 +1865,7 @@ proto.transaction.Withdraw.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getExternalacountnumber();
+  f = message.getExternalaccountnumber();
   if (f !== 0) {
     writer.writeSint64(
       6,
@@ -1966,10 +1966,10 @@ proto.transaction.Withdraw.prototype.setExternalbankcode = function(value) {
 
 
 /**
- * optional sint64 ExternalAcountNumber = 6;
+ * optional sint64 ExternalAccountNumber = 6;
  * @return {number}
  */
-proto.transaction.Withdraw.prototype.getExternalacountnumber = function() {
+proto.transaction.Withdraw.prototype.getExternalaccountnumber = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
@@ -1978,7 +1978,7 @@ proto.transaction.Withdraw.prototype.getExternalacountnumber = function() {
  * @param {number} value
  * @return {!proto.transaction.Withdraw} returns this
  */
-proto.transaction.Withdraw.prototype.setExternalacountnumber = function(value) {
+proto.transaction.Withdraw.prototype.setExternalaccountnumber = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
 };
 
@@ -2935,7 +2935,7 @@ proto.transaction.WithdrawMoneyRequest.toObject = function(includeInstance, msg)
     walletid: jspb.Message.getFieldWithDefault(msg, 3, 0),
     externalwalletid: jspb.Message.getFieldWithDefault(msg, 4, 0),
     externalbankcode: jspb.Message.getFieldWithDefault(msg, 5, 0),
-    externalacountnumber: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    externalaccountnumber: jspb.Message.getFieldWithDefault(msg, 6, 0),
     amount: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
@@ -2995,7 +2995,7 @@ proto.transaction.WithdrawMoneyRequest.deserializeBinaryFromReader = function(ms
       break;
     case 6:
       var value = /** @type {number} */ (reader.readSint64());
-      msg.setExternalacountnumber(value);
+      msg.setExternalaccountnumber(value);
       break;
     case 7:
       var value = /** @type {number} */ (reader.readSint64());
@@ -3065,7 +3065,7 @@ proto.transaction.WithdrawMoneyRequest.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getExternalacountnumber();
+  f = message.getExternalaccountnumber();
   if (f !== 0) {
     writer.writeSint64(
       6,
@@ -3173,10 +3173,10 @@ proto.transaction.WithdrawMoneyRequest.prototype.setExternalbankcode = function(
 
 
 /**
- * optional sint64 ExternalAcountNumber = 6;
+ * optional sint64 ExternalAccountNumber = 6;
  * @return {number}
  */
-proto.transaction.WithdrawMoneyRequest.prototype.getExternalacountnumber = function() {
+proto.transaction.WithdrawMoneyRequest.prototype.getExternalaccountnumber = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
@@ -3185,7 +3185,7 @@ proto.transaction.WithdrawMoneyRequest.prototype.getExternalacountnumber = funct
  * @param {number} value
  * @return {!proto.transaction.WithdrawMoneyRequest} returns this
  */
-proto.transaction.WithdrawMoneyRequest.prototype.setExternalacountnumber = function(value) {
+proto.transaction.WithdrawMoneyRequest.prototype.setExternalaccountnumber = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
 };
 
