@@ -8,6 +8,7 @@ service TransactionService {
     rpc TransferMoney(TransferMoneyRequest) returns (TransactionRPCResponse);
     rpc TopUpWallet(TopUpWalletRequest) returns (TransactionRPCResponse);
     rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+    rpc WithdrawMoney(WithdrawMoneyRequest) returns (TransactionRPCResponse);
 }
 
 message TransactionRPCResponse {
@@ -42,17 +43,49 @@ message TopUpWalletRequest {
 }
 
 // Transactions Structure
+message Transfer {
+    // Source
+    sint64 SourceWalletID = 1;
+    sint64 SourceOwnerID = 2;
+    string SourceOwnerTable = 3;
+
+    // Destination
+    sint64 DestWalletID = 4;
+    sint64 DestOwnerID = 5;
+    string DestOwnerTable = 6;
+}
+
+message TopUp {
+    sint64 WalletID = 1;
+    sint64 OwnerID = 2;
+    string OwnerTable = 3;
+}
+
+message Withdraw {
+    // Source
+    sint64 WalletID = 1;
+    sint64 OwnerID = 2;
+    string OwnerTable = 3;
+
+    // Destination
+    sint64 ExternalWalletID = 4;
+    sint64 ExternalBankCode = 5;
+    sint64 ExternalAcountNumber = 6;
+}
+
 message Transaction {
     string TransactionUUID = 1;
-    optional TransferMoneyRequest TransferDetails = 2;
-    optional TopUpWalletRequest TopUpDetails = 3;
-    uint64 IDWalletUpdateAction = 4;
-    string WalletUpdateAction = 5;
-    uint64 IDWalletLogStatus = 6;
-    string WalletLogStatus = 7;
-    sint64 Ammount = 8;
-    string Description = 9;
-    string CreatedAt = 10;
+    optional Transfer TransferDetails = 2;
+    optional TopUp TopUpDetails = 3;
+    optional Withdraw WithdrawDetails = 4;
+    uint64 IDWalletUpdateAction = 5;
+    string WalletUpdateAction = 6;
+    uint64 IDWalletLogStatus = 7;
+    string WalletLogStatus = 8;
+    sint64 Ammount = 9;
+    string Description = 10;
+    string CreatedAt = 11;
+    string ColorCode = 12;
 }
 
 message GetTransactionsRequest {
@@ -62,4 +95,19 @@ message GetTransactionsRequest {
 message GetTransactionsResponse {
     TransactionRPCResponse response = 1;
     repeated Transaction transactions = 3;
+}
+
+message WithdrawMoneyRequest {
+    // Source
+    sint64 OwnerID = 1; 
+    string OwnerTable = 2;
+    sint64 WalletID = 3; // Optional, if not provided, it will be fetched from the OwnerID and OwnerTable
+
+    // Destination (For withdrawal, it is generally going to be a bank account)
+    sint64 ExternalWalletID = 4; // Optional, if not provided, it will fetch using the bank code and account number or create a new one if not found
+    sint64 ExternalBankCode = 5;
+    sint64 ExternalAcountNumber = 6;
+
+    // Withdrawal Details
+    sint64 Amount = 7;
 }

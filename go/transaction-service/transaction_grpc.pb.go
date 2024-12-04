@@ -25,6 +25,7 @@ type TransactionServiceClient interface {
 	TransferMoney(ctx context.Context, in *TransferMoneyRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error)
 	TopUpWallet(ctx context.Context, in *TopUpWalletRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error)
 	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
+	WithdrawMoney(ctx context.Context, in *WithdrawMoneyRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error)
 }
 
 type transactionServiceClient struct {
@@ -62,6 +63,15 @@ func (c *transactionServiceClient) GetTransactions(ctx context.Context, in *GetT
 	return out, nil
 }
 
+func (c *transactionServiceClient) WithdrawMoney(ctx context.Context, in *WithdrawMoneyRequest, opts ...grpc.CallOption) (*TransactionRPCResponse, error) {
+	out := new(TransactionRPCResponse)
+	err := c.cc.Invoke(ctx, "/transaction.TransactionService/WithdrawMoney", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TransactionServiceServer is the server API for TransactionService service.
 // All implementations must embed UnimplementedTransactionServiceServer
 // for forward compatibility
@@ -69,6 +79,7 @@ type TransactionServiceServer interface {
 	TransferMoney(context.Context, *TransferMoneyRequest) (*TransactionRPCResponse, error)
 	TopUpWallet(context.Context, *TopUpWalletRequest) (*TransactionRPCResponse, error)
 	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
+	WithdrawMoney(context.Context, *WithdrawMoneyRequest) (*TransactionRPCResponse, error)
 	mustEmbedUnimplementedTransactionServiceServer()
 }
 
@@ -84,6 +95,9 @@ func (UnimplementedTransactionServiceServer) TopUpWallet(context.Context, *TopUp
 }
 func (UnimplementedTransactionServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactions not implemented")
+}
+func (UnimplementedTransactionServiceServer) WithdrawMoney(context.Context, *WithdrawMoneyRequest) (*TransactionRPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WithdrawMoney not implemented")
 }
 func (UnimplementedTransactionServiceServer) mustEmbedUnimplementedTransactionServiceServer() {}
 
@@ -152,6 +166,24 @@ func _TransactionService_GetTransactions_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TransactionService_WithdrawMoney_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WithdrawMoneyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TransactionServiceServer).WithdrawMoney(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/transaction.TransactionService/WithdrawMoney",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TransactionServiceServer).WithdrawMoney(ctx, req.(*WithdrawMoneyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TransactionService_ServiceDesc is the grpc.ServiceDesc for TransactionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -170,6 +202,10 @@ var TransactionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTransactions",
 			Handler:    _TransactionService_GetTransactions_Handler,
+		},
+		{
+			MethodName: "WithdrawMoney",
+			Handler:    _TransactionService_WithdrawMoney_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

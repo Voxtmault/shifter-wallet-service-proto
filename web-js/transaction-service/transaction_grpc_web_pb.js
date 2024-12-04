@@ -257,5 +257,66 @@ proto.transaction.TransactionServicePromiseClient.prototype.getTransactions =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.transaction.WithdrawMoneyRequest,
+ *   !proto.transaction.TransactionRPCResponse>}
+ */
+const methodDescriptor_TransactionService_WithdrawMoney = new grpc.web.MethodDescriptor(
+  '/transaction.TransactionService/WithdrawMoney',
+  grpc.web.MethodType.UNARY,
+  proto.transaction.WithdrawMoneyRequest,
+  proto.transaction.TransactionRPCResponse,
+  /**
+   * @param {!proto.transaction.WithdrawMoneyRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.transaction.TransactionRPCResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.transaction.WithdrawMoneyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.RpcError, ?proto.transaction.TransactionRPCResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.transaction.TransactionRPCResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.transaction.TransactionServiceClient.prototype.withdrawMoney =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/transaction.TransactionService/WithdrawMoney',
+      request,
+      metadata || {},
+      methodDescriptor_TransactionService_WithdrawMoney,
+      callback);
+};
+
+
+/**
+ * @param {!proto.transaction.WithdrawMoneyRequest} request The
+ *     request proto
+ * @param {?Object<string, string>=} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.transaction.TransactionRPCResponse>}
+ *     Promise that resolves to the response
+ */
+proto.transaction.TransactionServicePromiseClient.prototype.withdrawMoney =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/transaction.TransactionService/WithdrawMoney',
+      request,
+      metadata || {},
+      methodDescriptor_TransactionService_WithdrawMoney);
+};
+
+
 module.exports = proto.transaction;
 
