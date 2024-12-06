@@ -70,7 +70,7 @@ message Withdraw {
     // Destination
     sint64 ExternalWalletID = 4;
     sint64 ExternalBankCode = 5;
-    sint64 ExternalAccountNumber = 6;
+    string ExternalAccountNumber = 6;
 }
 
 message Transaction {
