@@ -825,9 +825,9 @@ type WithdrawMoneyRequest struct {
 	OwnerTable string `protobuf:"bytes,2,opt,name=OwnerTable,proto3" json:"OwnerTable,omitempty"`
 	WalletID   int64  `protobuf:"zigzag64,3,opt,name=WalletID,proto3" json:"WalletID,omitempty"` // Optional, if not provided, it will be fetched from the OwnerID and OwnerTable
 	// Destination (For withdrawal, it is generally going to be a bank account)
-	ExternalWalletID      int64 `protobuf:"zigzag64,4,opt,name=ExternalWalletID,proto3" json:"ExternalWalletID,omitempty"` // Optional, if not provided, it will fetch using the bank code and account number or create a new one if not found
-	ExternalBankCode      int64 `protobuf:"zigzag64,5,opt,name=ExternalBankCode,proto3" json:"ExternalBankCode,omitempty"`
-	ExternalAccountNumber int64 `protobuf:"zigzag64,6,opt,name=ExternalAccountNumber,proto3" json:"ExternalAccountNumber,omitempty"`
+	ExternalWalletID      int64  `protobuf:"zigzag64,4,opt,name=ExternalWalletID,proto3" json:"ExternalWalletID,omitempty"` // Optional, if not provided, it will fetch using the bank code and account number or create a new one if not found
+	ExternalBankCode      int64  `protobuf:"zigzag64,5,opt,name=ExternalBankCode,proto3" json:"ExternalBankCode,omitempty"`
+	ExternalAccountNumber string `protobuf:"bytes,6,opt,name=ExternalAccountNumber,proto3" json:"ExternalAccountNumber,omitempty"`
 	// Withdrawal Details
 	Amount int64 `protobuf:"zigzag64,7,opt,name=Amount,proto3" json:"Amount,omitempty"`
 }
@@ -899,11 +899,11 @@ func (x *WithdrawMoneyRequest) GetExternalBankCode() int64 {
 	return 0
 }
 
-func (x *WithdrawMoneyRequest) GetExternalAccountNumber() int64 {
+func (x *WithdrawMoneyRequest) GetExternalAccountNumber() string {
 	if x != nil {
 		return x.ExternalAccountNumber
 	}
-	return 0
+	return ""
 }
 
 func (x *WithdrawMoneyRequest) GetAmount() int64 {
@@ -1075,7 +1075,7 @@ var file_transaction_proto_rawDesc = []byte{
 	0x6b, 0x43, 0x6f, 0x64, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x12, 0x52, 0x10, 0x45, 0x78, 0x74,
 	0x65, 0x72, 0x6e, 0x61, 0x6c, 0x42, 0x61, 0x6e, 0x6b, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x34, 0x0a,
 	0x15, 0x45, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
-	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x12, 0x52, 0x15, 0x45, 0x78,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x15, 0x45, 0x78,
 	0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x4e, 0x75, 0x6d,
 	0x62, 0x65, 0x72, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x07, 0x20,
 	0x01, 0x28, 0x12, 0x52, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x32, 0xf9, 0x02, 0x0a, 0x12,
