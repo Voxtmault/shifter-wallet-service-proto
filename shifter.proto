@@ -8,7 +8,7 @@ service ShifterService {
     rpc GetFrontlinerBulk(GetFrontlinerBulkRequest) returns (GetFrontlinerBulkResponse);
 }
 
-message RPCResponse {
+message ShifterRPCResponse {
     int32 response = 1;
     string message = 2;
 }
@@ -19,7 +19,7 @@ message GetFrontlinerBulkRequest {
 }
 
 message GetFrontlinerBulkResponse {
-    RPCResponse response = 1;
+    ShifterRPCResponse response = 1;
     repeated Frontliner Frontliner = 2;
 }
 
