@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "./shifter-service";
+
+package wallet;
+
+service ShifterService {
+    rpc GetFrontlinerBulk(GetFrontlinerBulkRequest) returns (GetFrontlinerBulkResponse);
+}
+
+message RPCResponse {
+    int32 response = 1;
+    string message = 2;
+}
+
+message GetFrontlinerBulkRequest {
+    string apiKey = 1;
+    repeated uint64 FrontlinerId = 2;
+}
+
+message GetFrontlinerBulkResponse {
+    RPCResponse response = 1;
+    repeated Frontliner Frontliner = 2;
+}
+
+// Frontliner Model Definition
+message Frontliner {
+    uint64 Id = 1;
+    string Name = 2;
+    string Gender = 3;
+    string FrontlinerType = 4;
+    bool IsApproved = 5;
+    string CreatedAt = 7;
+}
